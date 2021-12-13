@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.IO.Compression;
 using System.Text.Json.Serialization;
+using Microsoft.OpenApi.Models;
 
 
 namespace TMobCaseStudy.Web
@@ -32,12 +33,36 @@ namespace TMobCaseStudy.Web
                 options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
             });
 
+            services.AddEndpointsApiExplorer();
+            ConfigureSwagger(services);
+            
+            
             services.Configure<GzipCompressionProviderOptions>(options =>
             {
                 options.Level = CompressionLevel.Optimal;
             });
             services.AddResponseCompression();
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+        }
+        private static void ConfigureSwagger(IServiceCollection services)
+        {
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new OpenApiInfo()
+                {
+                    Title = "Mars Rover",
+                    Description = "TMob Case Study",
+                    Contact = new OpenApiContact()
+                    {
+                        Name = "Soner Paycı",
+                        Email = "sonerpayci@gmail.com"
+                    },
+                });
+                options.DescribeAllParametersInCamelCase();
+
+                /*options.OperationFilter<HttpHeadersOperationFilter>();
+                options.OperationFilter<ExamplesOperationFilter>();*/
+            });
         }
         
         public void Configure(
@@ -51,6 +76,8 @@ namespace TMobCaseStudy.Web
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseSwagger();
+            app.UseSwaggerUI();
             app.UseResponseCompression();
             app.UseRouting();
             app.UseEndpoints(endpoints =>
