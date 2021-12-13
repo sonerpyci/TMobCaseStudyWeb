@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.IO.Compression;
 using System.Text.Json.Serialization;
 
+
 namespace TMobCaseStudy.Web
 {
     public class Startup
@@ -38,11 +39,7 @@ namespace TMobCaseStudy.Web
             services.AddResponseCompression();
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
-
         
-
-
-
         public void Configure(
             IApplicationBuilder app,
             IHttpContextAccessor httpContextAccessor,
