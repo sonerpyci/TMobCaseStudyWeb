@@ -23,6 +23,26 @@ public class SpaceCraftController : ControllerBase
         _spaceCraftOperations = new SpaceCraftOperation();
     }
 
+    /// <summary>
+    /// Simulates a Mars Rover Session.
+    /// </summary>
+    /// <remarks>
+    /// Sample request:
+    ///
+    ///     POST /api/planet/simulate
+    ///     {
+    ///         "InputList": [
+    ///             "55",
+    ///             "1 2 N",
+    ///             "LMLMLMLMM",
+    ///             "3 3 E",
+    ///             "MMRMMRMRRM"
+    ///         ]
+    ///     }
+    ///
+    /// </remarks>
+    /// <param name="InputList"></param>
+    /// <returns>Last locations of successful rovers</returns>
     [HttpPost]
     [Route("api/planet/simulate")]
     public SimulateMarsRoversOutput SimulateMarsRovers(SimulateMarsRoversInput simulateMarsRoversInput)

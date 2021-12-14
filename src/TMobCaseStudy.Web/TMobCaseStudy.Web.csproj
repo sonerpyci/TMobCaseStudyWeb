@@ -28,4 +28,9 @@
       <ProjectReference Include="..\TMobCaseStudy.Public\TMobCaseStudy.Public.csproj" />
     </ItemGroup>
 
+    <PropertyGroup>
+        <DocumentationFile>bin\$(Configuration)\$(Platform)\TMobCaseStudy.Web.xml</DocumentationFile>
+        <NoWarn>CS1591</NoWarn>
+    </PropertyGroup>
+
 </Project>

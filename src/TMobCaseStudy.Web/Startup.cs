@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.IO.Compression;
+using System.Reflection;
 using System.Text.Json.Serialization;
 using Microsoft.OpenApi.Models;
 
@@ -60,8 +61,9 @@ namespace TMobCaseStudy.Web
                 });
                 options.DescribeAllParametersInCamelCase();
 
-                /*options.OperationFilter<HttpHeadersOperationFilter>();
-                options.OperationFilter<ExamplesOperationFilter>();*/
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                options.IncludeXmlComments(xmlPath);
             });
         }
         
