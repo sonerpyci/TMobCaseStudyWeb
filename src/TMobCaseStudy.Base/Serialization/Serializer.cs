@@ -8,7 +8,7 @@ namespace TMobCaseStudy.Base.Serialization
     {
         public abstract void SerializeToStream<T>(T obj, Stream stream, bool leaveOpen = true);
 
-        protected virtual byte[] SerializeToBytes<T>(T obj)
+        public virtual byte[] SerializeToBytes<T>(T obj)
         {
             using var ms = new MemoryStream();
             SerializeToStream(obj, ms, leaveOpen:true);
