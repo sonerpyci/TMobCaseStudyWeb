@@ -10,7 +10,7 @@ public class SpaceCraftOperation : IOperationBase
     public void ValidateInput(string inputText)
     {
         if (string.IsNullOrWhiteSpace(inputText))
-            throw new Exception("Planet Size(s) Cannot be identified. Please Check the provided input.");
+            throw new Exception("SpaceCraft cannot be identified. Please Check the provided input.");
     }
 
     public ISpaceCraftBase BuildSpaceCraft(Location initialLocation, Planet planet, MotilityType motilityType)
