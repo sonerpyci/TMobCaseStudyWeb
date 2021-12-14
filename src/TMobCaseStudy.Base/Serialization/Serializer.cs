@@ -24,7 +24,7 @@ namespace TMobCaseStudy.Base.Serialization
 
         public abstract T DeserializeFromStream<T>(Stream stream);
 
-        protected virtual T DeserializeFromBytes<T>(byte[] bytes)
+        public virtual T DeserializeFromBytes<T>(byte[] bytes)
         {
             using var ms = new MemoryStream(bytes);
             return DeserializeFromStream<T>(ms);

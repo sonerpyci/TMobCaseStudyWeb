@@ -23,4 +23,9 @@
         <PackageReference Include="protobuf-net" Version="2.4.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\TMobCaseStudy.Core\TMobCaseStudy.Core.csproj" />
+      <ProjectReference Include="..\TMobCaseStudy.Public\TMobCaseStudy.Public.csproj" />
+    </ItemGroup>
+
 </Project>
