@@ -1,4 +1,5 @@
 using System.Text;
+using TMobCaseStudy.Data.Definitions.Exceptions;
 using TMobCaseStudy.Data.Entities;
 
 namespace TMobCaseStudy.Core;
@@ -33,7 +34,7 @@ public class PlanetOperation : IOperationBase
         int.TryParse(second, out var yBoundary);
 
         if (xBoundary == 0 || yBoundary == 0)
-            throw new Exception("Planet Size(s) Cannot be identified. Please Check the provided input.");
+            throw new ZeroPlanetBoundaryException("Planet x or y boundary is set to 0. Impossible case.");
         
         return (xBoundary, yBoundary);
     }
